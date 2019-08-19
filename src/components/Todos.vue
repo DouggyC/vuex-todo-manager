@@ -2,7 +2,7 @@
   <div>
     <h3>Todos</h3>
     <div class="legend">
-      <span>Double click to mark as complete</span>
+      <span>Double click to toggle as complete</span>
       <span> <span class="incomplete-box"></span> = Incomplete </span>
       <span> <span class="complete-box"></span> = Complete </span>
     </div>
@@ -15,7 +15,10 @@
         v-bind:class="{ 'is-completed': todo.completed }"
       >
         {{ todo.title }}
-        <i @click="deleteTodo(todo.id)" class="fas fa-trash-alt"></i>
+        <i
+          @click="deleteTodo(todo.id)"
+          class="fas fa-trash-alt"
+        ></i>
       </div>
     </div>
   </div>
@@ -29,7 +32,7 @@ export default {
   methods: {
     ...mapActions(["fetchTodos", "deleteTodo", "updateTodo"]),
 
-    onDblClick(todo) {
+    onDblClick (todo) {
       const updTodo = {
         id: todo.id,
         title: todo.title,
@@ -38,11 +41,12 @@ export default {
 
       this.updateTodo(updTodo);
     }
+
   },
 
   computed: mapGetters(["allTodos"]),
   // vue lifecycle method, upon component creation fetchTodos makes api call, commit res.data to state.todos, and available for component to use
-  created() {
+  created () {
     this.fetchTodos();
   }
 };

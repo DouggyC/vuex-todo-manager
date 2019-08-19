@@ -19,6 +19,7 @@
 ## Future Features
 
 - Vuetify
+- refactor with functionality cards
 - Full CRUD
 
 ## Project setup
